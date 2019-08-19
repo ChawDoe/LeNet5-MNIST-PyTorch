@@ -1,4 +1,4 @@
-# LeNet-5-MNIST-PyTorch
+# LeNet5-MNIST-PyTorch
 
 #### This is the simplest implementation of the paper "Gradient-based learning applied to document recognition" in PyTorch.
 #### Have a try with artificial intelligence!
