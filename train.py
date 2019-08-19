@@ -34,9 +34,9 @@ if __name__ == '__main__':
 
         for idx, (test_x, test_label) in enumerate(test_loader):
             predict_y = model(test_x.float()).detach()
-            predicy_ys = np.argmax(predict_y, axis=-1)
+            predict_ys = np.argmax(predict_y, axis=-1)
             label_np = test_label.numpy()
-            _ = predicy_ys == test_label
+            _ = predict_ys == test_label
             correct += np.sum(_.numpy(), axis=-1)
             _sum += _.shape[0]
 
