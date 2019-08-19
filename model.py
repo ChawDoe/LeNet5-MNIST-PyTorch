@@ -20,7 +20,7 @@ class Model(Module):
 
     def forward(self, x):
         y = self.conv1(x)
-        y = self.relu1(x)
+        y = self.relu1(y)
         y = self.pool1(y)
         y = self.conv2(y)
         y = self.relu2(y)
