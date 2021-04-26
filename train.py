@@ -15,7 +15,7 @@ if __name__ == '__main__':
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
     model = Model()
     sgd = SGD(model.parameters(), lr=1e-1)
-    cross_error = CrossEntropyLoss()
+    cost = CrossEntropyLoss()
     epoch = 100
 
     for _epoch in range(epoch):
@@ -23,10 +23,10 @@ if __name__ == '__main__':
             label_np = np.zeros((train_label.shape[0], 10))
             sgd.zero_grad()
             predict_y = model(train_x.float())
-            _error = cross_error(predict_y, train_label.long())
+            loss = cost(predict_y, train_label.long())
             if idx % 10 == 0:
                 print('idx: {}, _error: {}'.format(idx, _error))
-            _error.backward()
+            loss.backward()
             sgd.step()
 
         correct = 0
