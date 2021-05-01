@@ -25,7 +25,7 @@ if __name__ == '__main__':
             predict_y = model(train_x.float())
             loss = cost(predict_y, train_label.long())
             if idx % 10 == 0:
-                print('idx: {}, _error: {}'.format(idx, _error))
+                print('idx: {}, loss: {}'.format(idx, loss))
             loss.backward()
             sgd.step()
 
