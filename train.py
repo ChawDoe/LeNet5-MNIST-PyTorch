@@ -19,6 +19,7 @@ if __name__ == '__main__':
     epoch = 100
 
     for _epoch in range(epoch):
+        model.train()
         for idx, (train_x, train_label) in enumerate(train_loader):
             label_np = np.zeros((train_label.shape[0], 10))
             sgd.zero_grad()
@@ -31,7 +32,7 @@ if __name__ == '__main__':
 
         correct = 0
         _sum = 0
-
+        model.eval()
         for idx, (test_x, test_label) in enumerate(test_loader):
             predict_y = model(test_x.float()).detach()
             predict_ys = np.argmax(predict_y, axis=-1)
