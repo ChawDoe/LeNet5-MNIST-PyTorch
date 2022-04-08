@@ -15,31 +15,31 @@ if __name__ == '__main__':
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
     model = Model()
     sgd = SGD(model.parameters(), lr=1e-1)
-    cost = CrossEntropyLoss()
-    epoch = 100
+    loss_fn = CrossEntropyLoss()
+    all_epoch = 100
 
-    for _epoch in range(epoch):
+    for current_epoch in range(epoch):
         model.train()
         for idx, (train_x, train_label) in enumerate(train_loader):
             label_np = np.zeros((train_label.shape[0], 10))
             sgd.zero_grad()
             predict_y = model(train_x.float())
-            loss = cost(predict_y, train_label.long())
+            loss = loss_fn(predict_y, train_label.long())
             if idx % 10 == 0:
                 print('idx: {}, loss: {}'.format(idx, loss.sum().item()))
             loss.backward()
             sgd.step()
 
-        correct = 0
-        _sum = 0
+        all_correct_num = 0
+        all_sample_num = 0
         model.eval()
         for idx, (test_x, test_label) in enumerate(test_loader):
             predict_y = model(test_x.float()).detach()
-            predict_ys = np.argmax(predict_y, axis=-1)
+            predict_y = np.argmax(predict_y, axis=-1)
             label_np = test_label.numpy()
-            _ = predict_ys == test_label
-            correct += np.sum(_.numpy(), axis=-1)
-            _sum += _.shape[0]
-
-        print('accuracy: {:.2f}'.format(correct / _sum))
-        torch.save(model, 'models/mnist_{:.2f}.pkl'.format(correct / _sum))
+            current_correct_num = predict_y == test_label
+            all_correct_num += np.sum(current_correct_num.numpy(), axis=-1)
+            all_sample_num += current_correct_num.shape[0]
+        acc = all_correct_num / all_sample_num
+        print('accuracy: {:.2f}'.format(acc))
+        torch.save(model, 'models/mnist_{:.2f}.pkl'.format(acc))
