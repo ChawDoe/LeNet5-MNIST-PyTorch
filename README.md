@@ -11,7 +11,7 @@ torchvision >= 0.1.8
 ## Usage
 ```
 $git clone https://github.com/ChawDoe/LeNet-5-MNIST-PyTorch.git  
-$cd LeNet-5-MNIST-PyTorch  
+$cd LeNet5-MNIST-PyTorch  
 $python3 train.py  
 ```
 ## Hint
