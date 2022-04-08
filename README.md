@@ -3,6 +3,7 @@
 #### This is the simplest implementation of the paper "Gradient-based learning applied to document recognition" in PyTorch.
 #### Have a try with artificial intelligence!
 #### Feel free to ask anything!
+![image](https://user-images.githubusercontent.com/25716030/162345646-b13c9af0-bdb5-4ce7-9a62-c0834cba9e5f.png)
 ## Requirments
 Python3  
 PyTorch >= 0.4.0  
