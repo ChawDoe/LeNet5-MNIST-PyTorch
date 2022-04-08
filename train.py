@@ -21,7 +21,6 @@ if __name__ == '__main__':
     for current_epoch in range(epoch):
         model.train()
         for idx, (train_x, train_label) in enumerate(train_loader):
-            label_np = np.zeros((train_label.shape[0], 10))
             sgd.zero_grad()
             predict_y = model(train_x.float())
             loss = loss_fn(predict_y, train_label.long())
@@ -36,7 +35,6 @@ if __name__ == '__main__':
         for idx, (test_x, test_label) in enumerate(test_loader):
             predict_y = model(test_x.float()).detach()
             predict_y = np.argmax(predict_y, axis=-1)
-            label_np = test_label.numpy()
             current_correct_num = predict_y == test_label
             all_correct_num += np.sum(current_correct_num.numpy(), axis=-1)
             all_sample_num += current_correct_num.shape[0]
