@@ -18,7 +18,7 @@ if __name__ == '__main__':
     loss_fn = CrossEntropyLoss()
     all_epoch = 100
 
-    for current_epoch in range(epoch):
+    for current_epoch in range(all_epoch):
         model.train()
         for idx, (train_x, train_label) in enumerate(train_loader):
             sgd.zero_grad()
