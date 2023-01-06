@@ -14,6 +14,8 @@ $git clone https://github.com/ChawDoe/LeNet-5-MNIST-PyTorch.git
 $cd LeNet5-MNIST-PyTorch  
 $python3 train.py  
 ```
+model will now run on GPU if available
+
 ## Hint
 This repo includes the mnist dataset.
 ## Accuracy
